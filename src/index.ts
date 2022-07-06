@@ -16,6 +16,8 @@ graphics = canvas.getContext('2d');
 let cv: CvHLines;
 let obj: Obj3D;
 let ang: number=0;
+let pza1: number=0;
+
 
 function leerArchivo(e:any) {
   var archivo = e.target.files[0];
@@ -78,81 +80,64 @@ function decrDistFunc() {
   vp(0, 0, 0.5);
 }
 function Abrir() {
-  let af = -10;
- 	
-	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
+  let af = 70;
+   if(pza1<=2){
+    Rota3D.initRotate( obj.w[139], obj.w[140], -af*Math.PI/180);	
 
-  for (let i = 73; i <= 80; i++){
-    obj.w[i] = Rota3D.rotate(obj.w[i]);
-	}
-  
-	cv.setObj(obj);
-  cv.paint();	
-
-  Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
-
-  for (let i = 89; i <= 96; i++){
-    obj.w[i] = Rota3D.rotate(obj.w[i]);
-	}
-  
-	cv.setObj(obj);
-  cv.paint();
-  let af2 = 10;
- 	
-	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
-	
+    for (let i = 73; i <= 80; i++){
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    for (let i = 89; i <= 96; i++){
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();	
+	Rota3D.initRotate( obj.w[141], obj.w[142], af*Math.PI/180);	
   for (let i = 81; i <= 88; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
-	cv.setObj(obj);
-  cv.paint();	
-
-  Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
-	
   for (let i = 97; i <= 104; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
 	cv.setObj(obj);
   cv.paint();	
+  pza1++;
+  console.log(pza1);
+  }else{alert('No se puede abrir mas ');}
 }
+
 function Cerrar() {
-  let af = +10;
+  let af = 70;
+
+   if(pza1>0 && pza1<=3){
+    Rota3D.initRotate( obj.w[139], obj.w[140], +af*Math.PI/180);	
+
+    for (let i = 73; i <= 80; i++){
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    
+    for (let i = 89; i <= 96; i++){
+      obj.w[i] = Rota3D.rotate(obj.w[i]);
+    }
+    cv.setObj(obj);
+    cv.paint();	
+
+    let af2 = 10;
  	
-	Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
-
-  for (let i = 73; i <= 80; i++){
-    obj.w[i] = Rota3D.rotate(obj.w[i]);
-	}
-  
-	cv.setObj(obj);
-  cv.paint();	
-
-  Rota3D.initRotate( obj.w[139], obj.w[140], af*Math.PI/60);	
-
-  for (let i = 89; i <= 96; i++){
-    obj.w[i] = Rota3D.rotate(obj.w[i]);
-	}
-  
-	cv.setObj(obj);
-  cv.paint();
-  let af2 = -10;
- 	
-	Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
+	Rota3D.initRotate( obj.w[141], obj.w[142], -af*Math.PI/180);	
 	
   for (let i = 81; i <= 88; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
-	cv.setObj(obj);
-  cv.paint();	
-
-  Rota3D.initRotate( obj.w[141], obj.w[142], af2*Math.PI/60);	
 	
   for (let i = 97; i <= 104; i++){
     obj.w[i] = Rota3D.rotate(obj.w[i]);
 	}
 	cv.setObj(obj);
   cv.paint();	
-  
+  pza1--;
+  console-log(pza1);
+  }else{alert('No se puede cerrar llego a su limite');}
 }
 
 
